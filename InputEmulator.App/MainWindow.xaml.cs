@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,12 +14,17 @@ namespace InputEmulator.App
         {
             InitializeComponent();
 
-            // TestClick();
-        }
+            foreach (var button in this.StackPanel.Children.Cast<UIElement>().OfType<Button>())
+            {
+                button.MouseEnter += (sender, e) => this.TextBlock.Text += $"{(string)((Button)sender).Content} mouse enter" + Environment.NewLine;
+                button.MouseLeave += (sender, e) => this.TextBlock.Text += $"{(string)((Button)sender).Content} mouse leave" + Environment.NewLine;
+                button.MouseLeftButtonDown += (sender, e) => this.TextBlock.Text += $"{(string)((Button)sender).Content} mouse left button down" + Environment.NewLine;
+                button.MouseLeftButtonUp += (sender, e) => this.TextBlock.Text += $"{(string)((Button)sender).Content} mouse left button up" + Environment.NewLine;
+                button.Click += (sender, e) => this.TextBlock.Text += $"{(string)((Button)sender).Content} clicked" + Environment.NewLine;
+                button.IsMouseDirectlyOverChanged += (sender, e) => this.TextBlock.Text += $"{(string)((Button)sender).Content} is mouse directly over changed (was {e.OldValue}, now is {e.NewValue})" + Environment.NewLine;
+            }
 
-        private void ButtonClick(object sender, RoutedEventArgs e)
-        {
-            this.TextBlock.Text = $"{(string)((Button)sender).Content} clicked!";
+            //this.TestClick();
         }
 
         public static async Task ApplicationIdle()
@@ -29,13 +36,11 @@ namespace InputEmulator.App
 
         private async Task TestClick()
         {
+            await ApplicationIdle();
+
             Rect rect = new(this.Left, this.Top, this.RenderSize.Width, this.RenderSize.Height);
 
-            Point point = new(rect.Left + 40, rect.Top + 40);
-
-            await ApplicationIdle();
-
-            Input.MoveCursor(point);
+            Input.MoveCursor(new Point(rect.Left + 40, rect.Top + 40));
 
             await ApplicationIdle();
 
@@ -45,9 +50,9 @@ namespace InputEmulator.App
 
             Input.MouseLeftUp();
 
-            Point point2 = new(rect.Left + 40, rect.Top + 60);
+            await ApplicationIdle();
 
-            Input.MoveCursor(point2);
+            Input.MoveCursor(new Point(rect.Left + 40, rect.Top + 60));
 
             await ApplicationIdle();
 
@@ -57,9 +62,9 @@ namespace InputEmulator.App
 
             Input.MouseLeftUp();
 
-            Point point3 = new(rect.Left + 40, rect.Top + 80);
+            await ApplicationIdle();
 
-            Input.MoveCursor(point3);
+            Input.MoveCursor(new Point(rect.Left + 40, rect.Top + 80));
 
             await ApplicationIdle();
 
@@ -68,6 +73,10 @@ namespace InputEmulator.App
             await ApplicationIdle();
 
             Input.MouseLeftUp();
+
+            await ApplicationIdle();
+
+            Input.MoveCursor(new Point(rect.Left + 40, rect.Top + 100));
         }
     }
 }

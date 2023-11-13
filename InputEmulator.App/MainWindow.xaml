@@ -6,10 +6,10 @@
     Width="640"
     Height="480">
     <Grid>
-        <StackPanel>
-            <Button Content="Button 1" Click="ButtonClick"/>
-            <Button Content="Button 2" Click="ButtonClick"/>
-            <Button Content="Button 3" Click="ButtonClick"/>
+        <StackPanel x:Name="StackPanel">
+            <Button x:Name="Button1" Content="Button 1"/>
+            <Button x:Name="Button2" Content="Button 2"/>
+            <Button x:Name="Button3" Content="Button 3"/>
             <TextBlock x:Name="TextBlock"/>
         </StackPanel>
     </Grid>

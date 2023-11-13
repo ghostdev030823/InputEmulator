@@ -34,14 +34,25 @@ To trigger the automated click sequence, there are two different options:
   
 In either scenario, you will observe the mouse automatically clicking on the three buttons in succession.
 
-Below the buttons, there is a `TextBlock` that displays a message each time a button is clicked (`Button [BUTTON_NUMBER] is clicked!`), where `[BUTTON_NUMBER]` is the number of the button.
+Below the buttons, there is a `TextBlock` that displays a message each time a button event is triggered.
 
 At the end of the automated click sequence, you should see the following in the `TestBlock`:
 
 ```
-Button 1 is clicked!
-Button 2 is clicked!
-Button 3 is clicked!
+Button 1 mouse enter
+Button 1 is mouse directly over changed (was False, now is True)
+Button 1 is mouse directly over changed (was True, now is False)
+Button 1 clicked
+Button 1 mouse leave
+Button 2 mouse enter
+Button 2 is mouse directly over changed (was False, now is True)
+Button 2 is mouse directly over changed (was True, now is False)
+Button 2 clicked
+Button 2 mouse leave
+Button 3 mouse enter
+Button 3 is mouse directly over changed (was False, now is True)
+Button 3 is mouse directly over changed (was True, now is False)
+Button 3 clicked
 ```
 
 # Definition of a successful challenge solution

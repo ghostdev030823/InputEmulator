@@ -16,9 +16,7 @@ namespace InputEmulator.Test
 
             Rect rect = Window.GetWindowRect("InputEmulator.App", "MainWindow");
 
-            Point point = new(rect.Left + 40, rect.Top + 40);
-
-            Input.MoveCursor(point);
+            Input.MoveCursor(new Point(rect.Left + 40, rect.Top + 40));
 
             Thread.Sleep(500);
 
@@ -28,9 +26,9 @@ namespace InputEmulator.Test
 
             Input.MouseLeftUp();
 
-            Point point2 = new(rect.Left + 40, rect.Top + 60);
+            Thread.Sleep(500);
 
-            Input.MoveCursor(point2);
+            Input.MoveCursor(new Point(rect.Left + 40, rect.Top + 60));
 
             Thread.Sleep(500);
 
@@ -40,9 +38,9 @@ namespace InputEmulator.Test
 
             Input.MouseLeftUp();
 
-            Point point3 = new(rect.Left + 40, rect.Top + 80);
+            Thread.Sleep(500);
 
-            Input.MoveCursor(point3);
+            Input.MoveCursor(new Point(rect.Left + 40, rect.Top + 80));
 
             Thread.Sleep(500);
 
@@ -51,6 +49,10 @@ namespace InputEmulator.Test
             Thread.Sleep(500);
 
             Input.MouseLeftUp();
+
+            Thread.Sleep(500);
+
+            Input.MoveCursor(new Point(rect.Left + 40, rect.Top + 100));
         }
 
         private static void StartApp()
