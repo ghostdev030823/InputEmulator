@@ -30,13 +30,11 @@ namespace InputEmulator.Test
                 System.Windows.Point m_pos = GetCursorPosition();
                 System.Windows.Point point = new(rect.Left + 600, rect.Top + i * 20);
 
-                Thread.Sleep(2000);
-
                 if (point.X < -30000) break;
                 InputDll.Mouse.MoveCursor(point.X, point.Y);
                 InputDll.Mouse.MouseClick();
                 InputDll.Mouse.MoveCursor(m_pos.X, m_pos.Y);
-                //Thread.Sleep(2000);
+                Thread.Sleep(2000);
                 if (i == 4) break;
             }
             //-------------------END: MOVE AND CLICK -------------------------------
@@ -45,28 +43,13 @@ namespace InputEmulator.Test
             rect = Window.GetWindowRect("InputEmulator.App", "MainWindow");
             System.Windows.Point point4 = new System.Windows.Point(rect.Left + 200, rect.Top + 10);
             System.Windows.Point cursorPosition3 = GetCursorPosition();
+            InputDll.Mouse.BlockInput(true);
             InputDll.Mouse.MoveCursor(point4.X, point4.Y);
             InputDll.Mouse.MouseDrag(rect.Left + 150, rect.Top + 150);
             InputDll.Mouse.MoveCursor(cursorPosition3.X, cursorPosition3.Y);
             //--------------------END: DRAG AND DROP -------------------------------
             Thread.Sleep(1000);
 
-
-            //--------------------BEGIN: CONTEXT MENU CLICK -------------------------------
-            rect = Window.GetWindowRect("InputEmulator.App", "MainWindow");
-            System.Windows.Point contextMenuPt = new System.Windows.Point(rect.Left + 200, rect.Top + 200);
-            System.Windows.Point cursorPosition4 = GetCursorPosition();
-
-            InputDll.Mouse.MoveCursor(contextMenuPt.X, contextMenuPt.Y);
-            InputDll.Mouse.MouseRightClick();
-            InputDll.Mouse.MoveCursor(cursorPosition4.X, cursorPosition4.Y);
-            Thread.Sleep(500);
-
-            System.Windows.Point cursorPosition5 = GetCursorPosition();
-            InputDll.Mouse.MoveCursor(contextMenuPt.X + 20, contextMenuPt.Y + 10);
-            InputDll.Mouse.MouseClick();
-            InputDll.Mouse.MoveCursor(cursorPosition5.X, cursorPosition5.Y);
-            //--------------------END: CONTEXT MENU CLICK ---------------------------------
         }
         private static void StartApp()
         {
