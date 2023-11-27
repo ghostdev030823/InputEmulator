@@ -27,4 +27,10 @@
     <ProjectReference Include="..\InputEmulator.App\InputEmulator.App.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="InputDll">
+      <HintPath>..\InputDll.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
