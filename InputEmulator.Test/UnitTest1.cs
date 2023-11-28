@@ -27,7 +27,6 @@ namespace InputEmulator.Test
             {
                 i++;
                 rect = Window.GetWindowRect("InputEmulator.App", "MainWindow");
-                System.Windows.Point m_pos = GetCursorPosition();
                 System.Windows.Point point = new(rect.Left + 600, rect.Top + i * 20);
 
                 if (point.X < -30000) break;
