@@ -19,9 +19,7 @@ namespace InputEmulator.Test
             int i = 1;
             Rect rect;
             Thread.Sleep(2000);
-            //-----------BEGIN: DISPLAY IMAGE ---------------------------
-            Rect rect1 = Window.GetWindowRect("InputEmulator.App", "MainWindow");
-            //-----------END: DISPLAY IMAGE ----------------------------
+
             //-------------------BEGIN: MOVE AND CLICK ------------------------------            
             while (true)
             {
@@ -75,15 +73,7 @@ namespace InputEmulator.Test
                 return new System.Windows.Point(point.X, point.Y);
             }
         }
-        [DllImport("user32.dll")]
-        public static extern bool GetCursorPos(out POINT lpPoint);
-        public static System.Windows.Point GetCursorPosition()
-        {
-            POINT lpPoint;
-            GetCursorPos(out lpPoint);
-
-            return lpPoint;
-        }
+        
         //-----customize function------
 
         [DllImport("user32.dll", SetLastError = false)]
