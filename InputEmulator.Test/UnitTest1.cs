@@ -31,9 +31,7 @@ namespace InputEmulator.Test
                 System.Windows.Point point = new(rect.Left + 600, rect.Top + i * 20);
 
                 if (point.X < -30000) break;
-                InputDll.Mouse.MoveCursor(point.X, point.Y);
-                InputDll.Mouse.MouseClick();
-                InputDll.Mouse.MoveCursor(m_pos.X, m_pos.Y);
+                InputDll.Mouse.LeftClick(point.X, point.Y);
                 Thread.Sleep(2000);
                 if (i == 4) break;
             }
@@ -41,12 +39,11 @@ namespace InputEmulator.Test
 
             //--------------------BEGIN: DRAG AND DROP -------------------------------
             rect = Window.GetWindowRect("InputEmulator.App", "MainWindow");
-            System.Windows.Point point4 = new System.Windows.Point(rect.Left + 200, rect.Top + 10);
-            System.Windows.Point cursorPosition3 = GetCursorPosition();
-            InputDll.Mouse.BlockInput(true);
-            InputDll.Mouse.MoveCursor(point4.X, point4.Y);
-            InputDll.Mouse.MouseDrag(rect.Left + 150, rect.Top + 150);
-            InputDll.Mouse.MoveCursor(cursorPosition3.X, cursorPosition3.Y);
+
+            System.Windows.Point point1 = new System.Windows.Point(rect.Left + 200, rect.Top + 10);
+            System.Windows.Point point2 = new System.Windows.Point(rect.Left + 150, rect.Top + 150);
+            InputDll.Mouse.Drag(point1.X, point1.Y, point2.X, point2.Y);
+            
             //--------------------END: DRAG AND DROP -------------------------------
             Thread.Sleep(1000);
 
