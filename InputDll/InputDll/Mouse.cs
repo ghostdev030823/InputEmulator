@@ -60,6 +60,24 @@ namespace InputDll
             BlockInput(false);
             ShowCursor(true);
         }
+        public static void LeftDown(double x, double y)
+        {
+            POINT m_pos = GetCursorPosition();
+            BlockInput(true);
+            MoveCursor(x, y);
+            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+            MoveCursor(m_pos.X, m_pos.Y);
+            BlockInput(false);
+        }
+        public static void LeftUp(double x, double y)
+        {
+            POINT m_pos = GetCursorPosition();
+            BlockInput(true);
+            MoveCursor(x, y);
+            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+            MoveCursor(m_pos.X, m_pos.Y);
+            BlockInput(false);
+        }
         public static void Drag(double x1, double y1, double x2, double y2)
         {
             POINT m_pos = GetCursorPosition();

@@ -28,7 +28,8 @@ namespace InputEmulator.Test
                 System.Windows.Point point = new(rect.Left + 600, rect.Top + i * 20);
 
                 if (point.X < -30000) break;
-                InputDll.Mouse.LeftClick(point.X, point.Y);
+                InputDll.Mouse.LeftDown(point.X, point.Y);
+                InputDll.Mouse.LeftUp(point.X, point.Y);
                 Thread.Sleep(2000);
                 if (i == 4) break;
             }
